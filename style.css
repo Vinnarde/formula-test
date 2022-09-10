@@ -1,17 +1,40 @@
+:root {
+  --color-twitch-dark-background: rgb(24, 24, 27);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+}
+
 .player-wrapper {
-  width: 80vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
+  flex: 1 1 80%;
+
+  border-right: 3px solid var(--color-twitch-dark-background);
+}
+
+.twitch-wrapper {
+  width: 100%;
+  height: 100%;
+  flex: 1 1 20%;
 }
 
 .twitch-player-wrapper {
-  width: 20vw;
-  height: 20vh;
+  width: 100%;
+  height: 20%;
 }
 
 .twitch-chat-wrapper {
-  width: 20vw;
-  height: 80vh;
+  width: 100%;
+  height: 80%;
 }
+
 .iframe {
   width: 100%;
   height: 100%;
