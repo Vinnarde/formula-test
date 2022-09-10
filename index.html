@@ -10,20 +10,21 @@
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <link rel="stylesheet" href="normalize.css">
   <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/split.js/dist/split.min.js"></script>
 </head>
 
 <body class="bg-dark">
   <div class="container-fluid d-flex justify-content-space vh-100 overflow-hidden px-0">
-    <div class="player-wrapper">
+    <div class="player-wrapper" id="split-player-formula">
       <iframe class="iframe" src="https://vk.com/video_ext.php?oid=-172963629&id=456239762&hash=1f7fd4d538833c0b"
         frameborder="0" allowfullscreen="1" allow="autoplay; encrypted-media; fullscreen; picture-in-picture"></iframe>
     </div>
-    <div class="twitch-wrapper d-flex flex-column pt-1 pb-1">
-      <div class="twitch-player-wrapper flex-fill">
+    <div class="twitch-wrapper d-flex flex-column pt-1 pb-1" id="split-twitch">
+      <div class="twitch-player-wrapper flex-fill" id="split-twitch-player">
         <iframe class="iframe" src="https://player.twitch.tv/?channel=melharucos&parent=vinnarde.github.io" frameborder="0"
           allowfullscreen="true" scrolling="no" height="100%" width="100%"></iframe>
       </div>
-      <div class="twitch-chat-wrapper flex-fill">
+      <div class="twitch-chat-wrapper flex-fill" id="split-twitch-chat">
         <iframe class="iframe" id="twitch-chat-embed" src="https://www.twitch.tv/embed/melharucos/chat?darkpopout&parent=vinnarde.github.io"
           height="100%" width="100%">
         </iframe>
@@ -31,5 +32,24 @@
     </div>
   </div>
 </body>
+
+<script>
+  Split(['#split-player-formula', '#split-twitch'], {
+    sizes: [80, 20],
+    minSize: [300, 300],
+    gutterSize: 10,
+    // cursor: 'col-resize',
+    // direction: 'horizontal',
+
+  });
+
+  Split(['#split-twitch-player', '#split-twitch-chat'], {
+    sizes: [20, 80],
+    minSize: [300, 300],
+    gutterSize: 10,
+    cursor: 'row-resize',
+    direction: 'vertical',
+  });
+</script>
 
 </html>
