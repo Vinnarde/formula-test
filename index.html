@@ -37,21 +37,30 @@
 </body>
 
 <script>
-  Split(['#split-player-formula', '#split-twitch'], {
-    sizes: [80, 20],
-    minSize: [300, 300],
-    gutterSize: 10,
-    // cursor: 'col-resize',
-    // direction: 'horizontal',
 
+const playerSize = JSON.parse(localStorage.getItem('split-sizes-player')) || [80, 20];
+const twitchSizes = JSON.parse(localStorage.getItem('split-sizes-twitch')) || [20, 80];
+
+  Split(['#split-player-formula', '#split-twitch'], {
+    sizes: playerSize,
+    minSize: [100, 100],
+    gutterSize: 10,
+    cursor: 'col-resize',
+    direction: 'horizontal',
+    onDragEnd: function (sizes) {
+      localStorage.setItem('split-sizes-player', JSON.stringify(sizes));
+    }
   });
 
   Split(['#split-twitch-player', '#split-twitch-chat'], {
-    sizes: [20, 80],
-    minSize: [300, 300],
+    sizes: twitchSizes,
+    minSize: [100, 100],
     gutterSize: 10,
     cursor: 'row-resize',
     direction: 'vertical',
+    onDragEnd: function (sizes) {
+      localStorage.setItem('split-sizes-twitch', JSON.stringify(sizes));
+    }
   });
 </script>
 
